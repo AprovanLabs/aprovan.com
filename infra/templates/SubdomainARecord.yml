@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Link Route53 record to distribution
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: Domain name
+    Default: aprovan.com
+  SubdomainName:
+    Type: String
+    Description: Subdomain
+    Default: api
+  HostedZoneId:
+    Type: String
+    Description: Route53 hosted zone ID
+    Default: Z046909917DGKP7W30GBS
+  DistributionDomainName:
+    Type: String
+    Description: Name of CloudFront distribution
+
+Resources:
+  Route53Record:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      Comment: !Sub "Point ${SubdomainName}.${DomainName} to ${DistributionDomainName}"
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+        - Name: !Sub "${SubdomainName}.${DomainName}."
+          Type: A
+          AliasTarget:
+            HostedZoneId: Z2FDTNDATAQYW2
+            DNSName: !Sub "${DistributionDomainName}."

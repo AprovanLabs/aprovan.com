@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Public certificate for domain
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: Domain name
+    Default: aprovan.com
+
+Resources:
+  PublicCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref DomainName
+      SubjectAlternativeNames:
+        - !Sub "*.${DomainName}"
