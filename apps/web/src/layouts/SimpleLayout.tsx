@@ -23,20 +23,26 @@ const Header: React.FC = () => (
 )
 
 const Footer: React.FC = () => (
-  <footer className="relative bottom-0 h-12 w-full bg-primary">
+  <footer className="relative bottom-0 w-full bg-primary py-4">
     <div className="grid grid-rows-3">
-      <p className="col-span-3">aprovan</p>
-      <Link to="/">
+      <p className="col-start-1 row-span-full text-white"></p>
+      <Link to="/" className="col-start-2 text-right">
         <Button className="text-white" variant="link">
           Home
         </Button>
       </Link>
-      <Link to="/showcase">
+      <Link
+        to="/showcase"
+        className="col-start-2 text-right"
+      >
         <Button className="text-white" variant="link">
           Showcase
         </Button>
       </Link>
-      <Link to="/contact">
+      <Link
+        to="/contact"
+        className="col-start-2 text-right"
+      >
         <Button className="text-white" variant="link">
           Contact
         </Button>

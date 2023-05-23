@@ -1,3 +1,4 @@
+import { GithubIcon, LinkedinIcon } from 'lucide-react'
 import { Button } from 'src/components/Button'
 import SimpleLayout from 'src/layouts/SimpleLayout'
 import logoText from 'src/resources/logo/logo-text.svg'
@@ -6,9 +7,11 @@ const ContactCallout: React.FC = () => (
   <div className="relative mx-auto grid py-8">
     <h2 className="font-bold">the one-stop-shop</h2>
     <p>for custom software solutions</p>
-    <Button variant="secondary" className="mt-4">
-      contact us
-    </Button>
+    <a href="/contact" className="mt-4">
+      <Button variant="secondary" className="w-full">
+        contact us
+      </Button>
+    </a>
   </div>
 )
 
@@ -25,6 +28,18 @@ const HomePage: React.FC = () => (
       </div>
     </section>
     <ContactCallout />
+    <section className="m-4 flex justify-around gap-4 sm:justify-start">
+      <a href="https://github.com/AprovanLabs">
+        <div className="rounded-sm bg-primary p-8 text-white transition-colors hover:bg-secondary/10 hover:text-secondary">
+          <GithubIcon />
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/company/aprovan">
+        <div className="rounded-sm bg-primary p-8 text-white transition-colors hover:bg-secondary/10 hover:text-secondary">
+          <LinkedinIcon />
+        </div>
+      </a>
+    </section>
   </SimpleLayout>
 )
 

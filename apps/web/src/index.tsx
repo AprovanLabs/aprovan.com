@@ -9,11 +9,12 @@ import {
 import {
   QueryClient,
   QueryClientProvider,
-  useQuery,
 } from '@tanstack/react-query'
 
 import HomePage from './pages/HomePage'
 import './index.css'
+import ShowcasePage from './pages/showcase/ShowcasePage'
+import ContactPage from './pages/contact/ContactPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,23 +26,18 @@ const queryClient = new QueryClient({
   },
 })
 
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 )
 
 const App = () => (
   <Routes>
-    <Route
-      path="/"
-      element={<HomePage />}
-    />
-    <Route
-      path="*"
-      element={<Navigate to={'/'} />}
-    />
+    <Route path="/" element={<HomePage />} />
+    <Route path="/showcase" element={<ShowcasePage />} />
+    <Route path="/contact" element={<ContactPage />} />
+    <Route path="*" element={<Navigate to={'/'} />} />
   </Routes>
-);
+)
 
 root.render(
   <React.StrictMode>
