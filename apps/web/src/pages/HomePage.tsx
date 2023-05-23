@@ -180,7 +180,7 @@ const HomePage: React.FC = () => (
 
       <Project
         title="erm"
-        titleLink="https://extronremotemanagement.web.com"
+        titleLink="https://extron-remote-management.web.app/"
         description="ag-tech monitoring app"
         icons={
           <>
