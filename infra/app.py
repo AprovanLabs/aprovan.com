@@ -4,8 +4,8 @@ import aws_cdk as cdk
 from aws_cdk import Stack, Tags, CfnOutput
 from aws_cdk import aws_certificatemanager as certificatemanager
 from constructs import Construct
-from .web import Web
-from .constants import environment, project_id
+from src.web import Web
+from src.constants import environment, project_id
 
 
 class ClientStack(Stack):

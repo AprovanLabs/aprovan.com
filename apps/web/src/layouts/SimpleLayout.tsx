@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Button } from 'src/components/Button'
+import logoTextBottom from 'src/resources/logo/logo-text-bottom.svg'
 
 const Header: React.FC = () => (
   <header className="relative top-0 flex h-16 w-full items-center gap-2 bg-white pl-2">
@@ -13,7 +14,7 @@ const Header: React.FC = () => (
     <Link to="/">
       <Button variant="link">Home</Button>
     </Link>
-    <Link to="/showcase">
+    <Link to="/#showcase">
       <Button variant="link">Showcase</Button>
     </Link>
     <Link to="/contact">
@@ -23,9 +24,15 @@ const Header: React.FC = () => (
 )
 
 const Footer: React.FC = () => (
-  <footer className="relative bottom-0 w-full bg-primary py-4">
+  <footer className="relative mt-auto  w-full bg-primary py-4 align-bottom">
     <div className="grid grid-rows-3">
-      <p className="col-start-1 row-span-full text-white"></p>
+      <div className="col-start-1 row-span-full  text-white">
+        <img
+          src={logoTextBottom}
+          alt="Aprovan"
+          className="absolute bottom-0 left-0"
+        ></img>
+      </div>
       <Link to="/" className="col-start-2 text-right">
         <Button className="text-white" variant="link">
           Home
@@ -57,10 +64,10 @@ const SimpleLayout: React.FC<React.PropsWithChildren> = ({
   <>
     <div className="absolute flex h-full w-full flex-col">
       <Header />
-      <main className="relative flex h-full w-full flex-col justify-start  overflow-hidden bg-white p-0">
+      <main className="relative flex h-screen min-h-screen w-full flex-col justify-start overflow-x-hidden bg-white p-0">
         {children}
+        <Footer />
       </main>
-      <Footer />
     </div>
   </>
 )

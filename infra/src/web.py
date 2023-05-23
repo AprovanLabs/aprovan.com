@@ -7,10 +7,10 @@ from aws_cdk import (
     aws_cloudfront as cloudfront,
     aws_certificatemanager as certificatemanager,
 )
-from core.constants import org_id, project_id, environment
+from .constants import org_id, project_id, environment
 
 
-class WebModule(Construct):
+class Web(Construct):
     hosting_bucket: s3.Bucket
     url: str
 

@@ -2,8 +2,20 @@ include .env
 export
 
 
-.PHONY: web
+.PHONY: apps-web
 apps-web:
+	@echo "Deploying 'Lahilo' stack"
+	cdk bootstrap
+	cdk synth
+	cdk deploy \
+		--outputs-file cdk.out/outputs.json \
+		--require-approval never
+
+.PHONY: apps
+apps: apps-web
+
+.PHONY: client-web
+client-web:
 	$(eval REACT_APP_AWS_REGION=$(shell echo "$(AWS_DEFAULT_REGION)"))
 
 	$(eval REACT_APP_UI_URL=$(shell \
@@ -11,10 +23,9 @@ apps-web:
 		| jq -r 'to_entries[0].value.WebUrl' \
 	))
 
-	(cd ../apps/web && npm run build)
-
 	( \
-		cd ../client \
+		cd ../apps/web \
+		&& npm run build \
 		&& aws s3 sync \
 			build/ \
 			"s3://aprovan-client-${ENVIRONMENT}-web-${AWS_DEFAULT_REGION}" \
@@ -27,6 +38,9 @@ apps-web:
 
 .PHONY: client
 client: client-web
+
+.PHONY: all
+all: apps client
 
 .PHONY: install
 install:

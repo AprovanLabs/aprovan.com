@@ -13,7 +13,6 @@ import {
 
 import HomePage from './pages/HomePage'
 import './index.css'
-import ShowcasePage from './pages/showcase/ShowcasePage'
 import ContactPage from './pages/contact/ContactPage'
 
 const queryClient = new QueryClient({
@@ -33,7 +32,6 @@ const root = ReactDOM.createRoot(
 const App = () => (
   <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/showcase" element={<ShowcasePage />} />
     <Route path="/contact" element={<ContactPage />} />
     <Route path="*" element={<Navigate to={'/'} />} />
   </Routes>
