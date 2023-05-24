@@ -12,6 +12,7 @@ import logoBw from 'src/resources/logo/logo-bw.svg'
 import lahiloLogo from 'src/resources/logo/logo-lahilo.svg'
 import { cn } from 'src/lib/utils'
 import React from 'react'
+import Folderol from 'src/components/Folderol'
 
 const ContactCallout: React.FC = () => (
   <div className="relative mx-auto grid py-8">
@@ -83,15 +84,17 @@ const Project = React.forwardRef<
 
 const HomePage: React.FC = () => (
   <SimpleLayout>
-    <section className="align-center relative m-4 flex rounded-sm bg-secondary p-4">
+    <section className="align-center relative m-4 flex rounded-sm bg-secondary py-4">
       <img
         src={logoText}
         alt="Aprovan"
-        className="mx-auto mb-6"
+        className="relative mx-auto mb-6"
       ></img>
-      <div className="absolute bottom-0 left-0 h-12 w-12 rounded-t-full bg-white">
+      {/* <div className="absolute bottom-0 left-0 h-12 w-12 rounded-t-full bg-white">
         <div className="absolute inset-0 m-auto h-5 w-5 rounded-full bg-secondary"></div>
-      </div>
+      </div> */}
+
+      <Folderol className="absolute bottom-0" />
     </section>
     <ContactCallout />
 
