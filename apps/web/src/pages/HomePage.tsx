@@ -53,7 +53,7 @@ const Project = React.forwardRef<
       ref={ref}
       className={cn(
         className,
-        'sm:grid-template-rows-1 relative mx-auto grid w-3/4 grid-rows-2 gap-8 py-8 sm:grid-cols-[18rem_1fr] sm:grid-rows-1 sm:gap-12 md:grid-cols-[30rem_10rem] md:gap-12',
+        'sm:grid-template-rows-1 relative mx-auto grid w-3/4 grid-rows-2 gap-8 py-8 sm:grid-cols-[18rem_1fr] sm:grid-rows-1 sm:gap-12 md:grid-cols-[30rem_10rem] md:gap-12 lg:grid-cols-[70%_1fr] lg:gap-32',
       )}
     >
       <div className="relative h-full w-full">
@@ -102,7 +102,7 @@ const HomePage: React.FC = () => (
     >
       Showcase
     </h2>
-    <div className="m-4 flex flex-col gap-12 md:gap-24 lg:gap-48">
+    <div className="m-4 flex flex-col gap-12 md:gap-24 lg:gap-64">
       <Project
         title="lahilo"
         titleLink="https://lahilo.aprovan.com"
@@ -115,9 +115,9 @@ const HomePage: React.FC = () => (
         }
         logo={<img src={lahiloLogo} alt="Lahilo"></img>}
       >
-        <div className="relative h-full overflow-hidden">
+        <div className="relative mx-auto h-full max-w-xs overflow-hidden">
           <img
-            className="t-0 absolute w-full rotate-[-10deg]"
+            className="t-0 max-w-20rem absolute w-full rotate-[-10deg]"
             src="/images/lahilo-reader.png"
             alt="Lahilo Reader Bottom"
           />
