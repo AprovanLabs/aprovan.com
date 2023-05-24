@@ -84,7 +84,7 @@ const Project = React.forwardRef<
 
 const HomePage: React.FC = () => (
   <SimpleLayout>
-    <section className="align-center relative m-4 flex rounded-sm bg-secondary py-4">
+    <section className="align-center relative mx-4 mb-4 mt-2 flex rounded-sm bg-secondary py-4">
       <img
         src={logoText}
         alt="Aprovan"
