@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Link Route53 record to distribution
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: Domain name
+    Default: aprovan.com
+  SubdomainName:
+    Type: String
+    Description: Subdomain
+    Default: api
+  HostedZoneId:
+    Type: String
+    Description: Route53 hosted zone ID
+    Default: Z046909917DGKP7W30GBS
+  DestinationDomainName:
+    Type: String
+    Description: Domain name
+
+Resources:
+  Route53Record:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      Comment: !Sub "Point ${SubdomainName}.${DomainName} to ${DestinationDomainName}"
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+        - Name: !Sub "${SubdomainName}.${DomainName}."
+          Type: CNAME
+          TTL: "300"
+          ResourceRecords:
+            - !Ref DestinationDomainName
