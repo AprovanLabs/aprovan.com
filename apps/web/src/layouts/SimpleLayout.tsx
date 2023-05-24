@@ -3,7 +3,7 @@ import { Button } from 'src/components/Button'
 import logoTextBottom from 'src/resources/logo/logo-text-bottom.svg'
 
 const Header: React.FC = () => (
-  <header className="absolute top-0 mb-2 flex h-16 w-full items-center gap-2 bg-white pl-2">
+  <header className="fixed top-0 flex h-16 w-full items-center gap-2 bg-white pl-2">
     <img
       className="relative -translate-y-1"
       src="/logo-bw.png"
@@ -62,25 +62,27 @@ const SimpleLayout: React.FC<React.PropsWithChildren> = ({
   children,
 }) => (
   <>
-    <div className="absolute flex h-full w-full flex-col">
-      <main
-        className="scrollbox relative mt-16 flex h-screen min-h-screen w-full flex-col justify-start overflow-x-hidden bg-white p-0"
-        style={{
-          overflow: 'auto',
-          background: `
+    <div
+      className="absolute flex w-full flex-col"
+      style={{
+        background: `
             /* Shadow covers */
-            linear-gradient(white 30%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+            linear-gradient(white 0%, rgba(255, 255, 255, 0)), linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 50%,
             /* Shadows */
             radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)), radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%
           `,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize:
-            '100% 15px, 100% 15px, 100% 5px, 100% 5px',
-          /* Opera doesn't support this in the shorthand */
-          backgroundAttachment:
-            'local, local, scroll, scroll',
-        }}
-      >
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionY: '4rem',
+        backgroundSize:
+          '100% 12px, 100% 12px, 100% 5px, 100% 5px',
+        /* Opera doesn't support this in the shorthand */
+        backgroundAttachment: 'fixed',
+        // overflow: 'auto',
+        // backgroundAttachment:
+        // 'local, local, scroll, scroll',
+      }}
+    >
+      <main className="relative mt-16 flex min-h-screen w-full flex-col justify-start overflow-x-hidden  px-0">
         {children}
         <Footer />
       </main>
