@@ -23,6 +23,15 @@ module.exports = {
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
+          100: 'hsl(6, 90%, 95%)',
+          200: 'hsl(6, 90%, 90%)',
+          300: 'hsl(6, 90%, 80%)',
+          400: 'hsl(6, 90%, 70%)',
+          500: 'hsl(4, 80%, 60%)',
+          600: 'hsl(0, 70%, 50%)',
+          700: 'hsl(-4, 90%, 40%)',
+          800: 'hsl(-8, 90%, 30%)',
+          900: 'hsl(-12, 90%, 20%)',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
