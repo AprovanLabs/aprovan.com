@@ -115,7 +115,7 @@ const HomePage: React.FC = () => (
         }
         logo={<img src={lahiloLogo} alt="Lahilo"></img>}
       >
-        <div className="relative mx-auto h-full max-w-xs overflow-hidden">
+        <div className="relative mx-auto h-full overflow-hidden lg:h-96">
           <img
             className="t-0 max-w-20rem absolute w-full rotate-[-10deg]"
             src="/images/lahilo-reader.png"
@@ -189,7 +189,7 @@ const HomePage: React.FC = () => (
         }
         logo={<img src={logoBw} alt="El Yankee"></img>}
       >
-        <div className="relative h-full w-full">
+        <div className="relative h-full w-full lg:h-96">
           <img
             className="absolute left-1/2 h-[120%] -translate-x-3/4 -translate-y-6"
             src="/images/erm-bin.png"
