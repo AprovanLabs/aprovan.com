@@ -5,7 +5,7 @@
 <a href="https://aprovan.com">
 <img height="20" src="https://img.shields.io/badge/aprovan.com-ef4444?style=flat-square" alt="aprovan.com">
 </a>
-<a href="https://github.com/AprovanLabs/data-science">
+<a href="https://github.com/AprovanLabs">
 <img height="20" src="https://img.shields.io/badge/-AprovanLabs-000000?style=flat-square&logo=GitHub&logoColor=white&link=https://github.com/AprovanLabs/" alt="Aprovan Labs GitHub" />
 </a>
 <a href="https://www.linkedin.com/company/aprovan">
