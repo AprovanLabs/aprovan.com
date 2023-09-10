@@ -11,13 +11,22 @@ const Header: React.FC = () => (
       height={40}
       alt="Aprovan"
     />
-    <Link to="/">
+    {/* <Link
+      to="/"
+      onClick={() => (window.location.hash = '#title')}
+    >
       <Button variant="link">Home</Button>
-    </Link>
-    <Link to="/#showcase">
+    </Link> */}
+    <Link
+      to="/#showcase"
+      onClick={() => (window.location.hash = '#showcase')}
+    >
       <Button variant="link">Showcase</Button>
     </Link>
-    <Link to="/contact">
+    <Link
+      to="/#contact"
+      onClick={() => (window.location.hash = '#contact')}
+    >
       <Button variant="link">Contact</Button>
     </Link>
   </header>
