@@ -15,13 +15,15 @@ import Socials from 'src/components/Socials'
 
 const ContactCallout: React.FC = () => (
   <div className="relative mx-auto grid py-8">
-    <h2 className="font-bold">the one-stop-shop</h2>
+    <h2 className="font-bold">The one-stop-shop</h2>
     <p>for custom software solutions</p>
-    <a href="/contact" className="mt-4">
-      <Button variant="secondary" className="w-full">
-        contact us
-      </Button>
-    </a>
+    <Button
+      onClick={() => (window.location.hash = '#contact')}
+      variant="secondary"
+      className="mt-4 w-full"
+    >
+      Contact Us
+    </Button>
   </div>
 )
 
@@ -212,7 +214,7 @@ const HomePage: React.FC = () => (
 
       <Project
         title="Lotus Technical"
-        titleLink="https://lotustechnical.com"
+        // titleLink="https://lotustechnical.com"
         description="Staffing website and job portal"
         icons={
           <>
@@ -259,9 +261,9 @@ const HomePage: React.FC = () => (
       </Project>
 
       <Project
-        title="Extron Remote Management (ERM)"
+        title="ERM App"
         titleLink="https://extron-remote-management.web.app/"
-        description="ag-tech monitoring app"
+        description="Ag-tech monitoring app"
         icons={
           <>
             <SmartphoneIcon size={20} />
