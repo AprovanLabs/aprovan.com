@@ -153,7 +153,7 @@ const HomePage: React.FC = () => (
         date={new Date('2023-09-01')}
         title="EXTRON Company"
         titleLink="https://www.linkedin.com/posts/extron_were-proud-to-announce-the-next-step-in-activity-7103030449890852864-M8Ii?utm_source=share&utm_medium=member_desktop"
-        description="ERM released to the Google Play Store and Apple App Store"
+        description="Extron Remote Management (ERM) app released to the Google Play Store and Apple App Store"
         icons={
           <>
             <SmartphoneIcon size={20} />
@@ -184,9 +184,9 @@ const HomePage: React.FC = () => (
     </h2>
     <div className="m-4 flex flex-col gap-12 md:gap-24 lg:gap-64">
       <Project
-        title="lahilo"
+        title="Lahilo"
         titleLink="https://lahilo.aprovan.com"
-        description="langage learning done naturally"
+        description="Langage learning done naturally"
         icons={
           <>
             <MonitorIcon size={20} />
@@ -211,9 +211,9 @@ const HomePage: React.FC = () => (
       </Project>
 
       <Project
-        title="lotus technical"
+        title="Lotus Technical"
         titleLink="https://lotustechnical.com"
-        description="staffing website and job portal"
+        description="Staffing website and job portal"
         icons={
           <>
             <MonitorIcon size={20} />
@@ -236,9 +236,9 @@ const HomePage: React.FC = () => (
       </Project>
 
       <Project
-        title="el yankee"
+        title="El Yankee"
         titleLink="https://elyankee.org"
-        description="study abroad blogging site"
+        description="Study abroad blogging site"
         icons={
           <>
             <MonitorIcon size={20} />
@@ -259,7 +259,7 @@ const HomePage: React.FC = () => (
       </Project>
 
       <Project
-        title="erm"
+        title="Extron Remote Management (ERM)"
         titleLink="https://extron-remote-management.web.app/"
         description="ag-tech monitoring app"
         icons={
