@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Receive email via SES
+
+Parameters:
+  EmailName:
+    Type: String
+    Description: Email name
+    Default: admin
+  DomainName:
+    Type: String
+    Description: Domain name
+    Default: aprovan.com
+  SubdomainName:
+    Type: String
+    Description: Subdomain
+    Default: api
+  # S3BucketName:
+  #   Type: String
+  #   Description: S3 bucket name
+  #   Default: email
+  # S3Prefix:
+  #   Type: String
+  #   Description: S3 prefix
+  # Default: emails/api
+
+Resources:
+  EmailConfigSet:
+    Type: AWS::SES::ConfigurationSet
+    Properties:
+      Name: !Ref EmailName
+      TrackingOptions:
+        CustomRedirectDomain: !Sub "${SubdomainName}.${DomainName}"
+      SendingOptions:
+        SendingEnabled: true
+      ReputationOptions:
+        ReputationMetricsEnabled: true
+
+  EmailIdentity:
+    DependsOn:
+      - EmailConfigSet
+    Type: AWS::SES::EmailIdentity
+    Properties:
+      EmailIdentity: !Sub "${EmailName}.${DomainName}"
+      ConfigurationSetAttributes:
+        ConfigurationSetName: !Ref EmailName
+      MailFromAttributes:
+        BehaviorOnMxFailure: USE_DEFAULT_VALUE
+        MailFromDomain: !Sub "${SubdomainName}.${DomainName}"
+
+  ReceiveEmailRuleSet:
+    Type: AWS::SES::ReceiptRuleSet
+    Properties:
+      RuleSetName: !Sub "${EmailName}.${DomainName}"
+
+  ReceiveEmailRule:
+    DependsOn:
+      - EmailIdentity
+      - ReceiveEmailRuleSet
+    Type: AWS::SES::ReceiptRule
+    Properties:
+      RuleSetName: !Ref ReceiveEmailRuleSet
+      Rule:
+        Name: !Sub "${EmailName}-${DomainName}"
+        TlsPolicy: Optional
+        Recipients:
+          - !Sub "${EmailName}@${DomainName}"
+        # Actions:
+        #   - S3Action:
+        #       BucketName: !Ref S3BucketName
+        #       ObjectKeyPrefix: !Sub "${S3Prefix}/"
+        ScanEnabled: true
+        StopAction: !Sub "${EmailName}@${DomainName}"
+        Recipient: !Sub "${EmailName}@${DomainName}"
