@@ -42,13 +42,14 @@ const Footer: React.FC = () => (
           className="absolute bottom-0 left-0"
         ></img>
       </div>
-      <Link to="/" className="col-start-2 text-right">
+      {/* <Link to="/" className="col-start-2 text-right">
         <Button className="text-white" variant="link">
           Home
         </Button>
-      </Link>
+      </Link> */}
       <Link
-        to="/showcase"
+        to="/#showcase"
+        onClick={() => (window.location.hash = '#showcase')}
         className="col-start-2 text-right"
       >
         <Button className="text-white" variant="link">
@@ -56,12 +57,16 @@ const Footer: React.FC = () => (
         </Button>
       </Link>
       <Link
-        to="/contact"
+        to="/#contact"
+        onClick={() => (window.location.hash = '#contact')}
         className="col-start-2 text-right"
       >
         <Button className="text-white" variant="link">
           Contact
         </Button>
+      </Link>
+      <Link to="/privacy-policy">
+        <p className="absolute top-5   left-4 text-slate-400 border-b border-b-transparent transition-all ease-in-out hover:border-b-slate-400 hover:cursor-pointer">Privacy Policy</p>
       </Link>
     </div>
   </footer>

@@ -12,8 +12,9 @@ import {
 } from '@tanstack/react-query'
 
 import HomePage from './pages/HomePage'
-import './index.css'
+import PrivacyPolicyPage from './pages/privacy-policy/PrivacyPolicyPage'
 import ContactPage from './pages/contact/ContactPage'
+import './index.css'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,10 @@ const App = () => (
   <Routes>
     <Route path="/" element={<HomePage />} />
     <Route path="/contact" element={<ContactPage />} />
+    <Route
+      path="/privacy-policy"
+      element={<PrivacyPolicyPage />}
+    />
     <Route path="*" element={<Navigate to={'/'} />} />
   </Routes>
 )
