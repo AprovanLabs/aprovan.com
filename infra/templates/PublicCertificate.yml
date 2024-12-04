@@ -14,3 +14,6 @@ Resources:
       DomainName: !Ref DomainName
       SubjectAlternativeNames:
         - !Sub "*.${DomainName}"
+        - !Sub "api.*.${DomainName}"
+        - !Sub "auth.*.${DomainName}"
+        - !Sub "docs.*.${DomainName}"
