@@ -5,7 +5,7 @@ from aws_cdk import Stack, Tags, CfnOutput
 from aws_cdk import aws_certificatemanager as certificatemanager
 from constructs import Construct
 from src.web import Web
-from src.constants import environment, project_id
+from src.constants import environment, org_id, project_id
 
 
 class ClientStack(Stack):
@@ -28,16 +28,21 @@ class ClientStack(Stack):
 
 app = cdk.App()
 
-project_name = project_id.capitalize()
 stack = ClientStack(
     app,
-    f"{project_name}-{environment.capitalize()}",
+    "-".join(
+        [
+            org_id,
+            environment,
+            "use2",
+            project_id,
+        ]
+    ),
     env=cdk.Environment(
         account=os.environ["CDK_DEFAULT_ACCOUNT"],
         region=os.environ["CDK_DEFAULT_REGION"],
     ),
 )
-Tags.of(stack).add("Project", project_name)
-Tags.of(stack).add("Environment", environment.capitalize())
+Tags.of(stack).add("environment", environment)
 
 app.synth()

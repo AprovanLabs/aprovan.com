@@ -7,7 +7,7 @@ from aws_cdk import (
     aws_cloudfront as cloudfront,
     aws_certificatemanager as certificatemanager,
 )
-from .constants import org_id, project_id, environment
+from .constants import org_id, environment, region_short_code
 
 
 class Web(Construct):
@@ -31,10 +31,9 @@ class Web(Construct):
             bucket_name="-".join(
                 [
                     org_id,
-                    project_id,
                     environment,
+                    region_short_code,
                     "web",
-                    stack.region,
                 ]
             ),
             website_index_document="index.html",
