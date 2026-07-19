@@ -1,1 +1,6 @@
 .venv
+
+# vite build output
+apps/web/dist
+
+node_modules/

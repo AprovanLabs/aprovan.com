@@ -1,5 +1,7 @@
+import React from "react";
+
 const PrivacyPolicyPage: React.FC = () => (
-  <div className="prose flex w-full flex-col px-12 py-12">
+  <div className="prose mx-auto w-full max-w-3xl flex-col px-6 py-16 dark:prose-invert">
     <h1>Privacy Policy</h1>
     <p>Last updated: March 12, 2024</p>
     <p>

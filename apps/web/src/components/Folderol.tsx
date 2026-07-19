@@ -1,63 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import { cn } from 'src/lib/utils'
+/**
+ * Folderol — the slowly drifting waves from the original aprovan.com hero.
+ * Ported as-is (palette + motion), with the animation loop on rAF timing.
+ */
+import React, { useEffect, useRef, useState } from "react";
 
-const RATE = 10
-const DEFAULT_PALETTE = ['#4A4A4A', '#3A3A3A', 'gray']
+const DEFAULT_PALETTE = ["#4A4A4A", "#3A3A3A", "gray"];
 
-export type FolderolType = 'wave'
-
-export interface FolderolProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  type?: FolderolType
-  palette?: string[]
-  seed?: number | number[]
+export interface FolderolProps extends React.HTMLAttributes<HTMLDivElement> {
+  palette?: string[];
 }
 
-const Folderol: React.FC<FolderolProps> = ({
+export default function Folderol({
   className,
-  children,
   palette = DEFAULT_PALETTE,
-  type = 'wave',
-  seed = 0,
-}) => {
-  const [t, setT] = useState<number>(0)
+}: FolderolProps) {
+  const [t, setT] = useState<number>(0);
+  const frame = useRef<number>(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setT((t) => {
-        if (t === Number.MAX_SAFE_INTEGER) {
-          return 0
-        }
-        return t + 0.25
-      })
-    }, RATE)
-  }, [t])
+    let last = performance.now();
+    const tick = (now: number) => {
+      // Match the original cadence (~0.25 per 10ms) without hammering setState.
+      const delta = now - last;
+      last = now;
+      setT((prev) => (prev > 1e9 ? 0 : prev + delta * 0.025));
+      frame.current = requestAnimationFrame(tick);
+    };
+    frame.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame.current);
+  }, []);
 
-  const f = (x: number): number => {
-    return Math.cos((x * Math.PI) / 180) * 50
-  }
+  const f = (x: number): number => Math.cos((x * Math.PI) / 180) * 50;
 
   return (
-    <div
-      className={cn(
-        className,
-        ` h-full w-full overflow-hidden opacity-[0.15]`,
-      )}
-    >
-      {palette?.map((color, index) => {
-        const dt = index * 180 + 1 * index * t
-
-        const origin = -40 - index * 10 - f(t)
-        const mid = 50 + 30 * index
-        const end = 150 + index * 10 + f(t)
+    <div className={`h-full w-full overflow-hidden opacity-[0.15] ${className ?? ""}`}>
+      {palette.map((color, index) => {
+        const dt = index * 180 + index * t;
+        const origin = -40 - index * 10 - f(t);
+        const mid = 50 + 30 * index;
+        const end = 150 + index * 10 + f(t);
 
         return (
-          <div
-            className={
-              'absolute bottom-0 left-0 h-full w-full'
-            }
-            key={color}
-          >
+          <div className="absolute bottom-0 left-0 h-full w-full" key={color}>
             <svg
               className="h-full w-full"
               width="100"
@@ -75,13 +59,11 @@ const Folderol: React.FC<FolderolProps> = ({
                 L ${end}, ${end}
                 L ${origin}, ${end}
               `}
-              ></path>
+              />
             </svg>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
-
-export default Folderol

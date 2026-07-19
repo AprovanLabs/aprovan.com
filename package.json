@@ -1,0 +1,12 @@
+{
+  "name": "@aprovan/home",
+  "version": "0.1.0",
+  "private": true,
+  "description": "aprovan.com — the Aprovan home page",
+  "scripts": {
+    "dev": "pnpm --filter @aprovan/home-web dev",
+    "build": "pnpm --filter @aprovan/home-web build",
+    "deploy:web": "scripts/deploy-web.sh"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
